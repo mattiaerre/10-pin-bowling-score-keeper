@@ -1,42 +1,43 @@
 namespace ABSK.CORE.Domain
 {
-  public class Frame : IFrame
+  public class Frame : FrameBase
   {
-    private int _ballOne;
-    private int _ballTwo;
-
     public Frame(int number)
+      : base(number)
     {
-      Number = number;
     }
 
-    public int Number { get; private set; }
-
-    public bool IsStrike
+    protected override bool IsNew
     {
-      get { return _ballOne == Constants.NumberOfPins; }
+      get { return BallOne == null && BallTwo == null; }
     }
 
-    public bool IsSpare
+    protected override bool IsInProgress
     {
-      get { return _ballOne != Constants.NumberOfPins && _ballOne + _ballTwo == Constants.NumberOfPins; }
+      get
+      {
+        if (IsStrike)
+          return false;
+        if (IsSpare)
+          return false;
+        if (BallOne != null && BallTwo != null)
+          return false;
+        return true;
+      }
     }
 
-    public void SetBallOne(int ballOne)
+    protected override bool IsOver
     {
-      // todo: add exception handling
-      _ballOne = ballOne;
-    }
-
-    public void SetBallTwo(int ballTwo)
-    {
-      // todo: add exception handling
-      _ballTwo = ballTwo;
-    }
-
-    public int GetScore()
-    {
-      return _ballOne + _ballTwo;
+      get
+      {
+        if (IsStrike)
+          return true;
+        if (IsSpare)
+          return true;
+        if (BallOne != null && BallTwo != null)
+          return true;
+        return false;
+      }
     }
   }
 }

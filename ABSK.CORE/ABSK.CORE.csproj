@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Constants.cs" />
+    <Compile Include="Domain\FrameBase.cs" />
+    <Compile Include="Domain\FrameStatus.cs" />
     <Compile Include="Domain\IFrame.cs" />
     <Compile Include="Domain\Frame.cs" />
     <Compile Include="Domain\ILastFrame.cs" />

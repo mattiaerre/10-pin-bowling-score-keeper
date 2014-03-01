@@ -1,0 +1,54 @@
+namespace ABSK.CORE.Domain
+{
+  public abstract class FrameBase : IFrame
+  {
+    protected int? BallOne;
+    protected int? BallTwo;
+
+    protected FrameBase(int number)
+    {
+      Number = number;
+    }
+
+    public int Number { get; private set; }
+
+    public bool IsStrike
+    {
+      get { return BallOne == Constants.NumberOfPins; }
+    }
+
+    public bool IsSpare
+    {
+      get { return !IsStrike && BallOne + BallTwo == Constants.NumberOfPins; }
+    }
+
+    protected abstract bool IsNew { get; }
+
+    protected abstract bool IsInProgress { get; }
+
+    protected abstract bool IsOver { get; }
+
+    public void SetBallOne(int ballOne)
+    {
+      // todo: add exception handling
+      BallOne = ballOne;
+    }
+
+    public void SetBallTwo(int ballTwo)
+    {
+      // todo: add exception handling
+      BallTwo = ballTwo;
+    }
+
+    public FrameStatus GetStatus()
+    {
+      if (IsNew)
+        return FrameStatus.New;
+      if (IsInProgress)
+        return FrameStatus.InProgress;
+      if (IsOver)
+        return FrameStatus.Over;
+      return FrameStatus.Unknown;
+    }
+  }
+}

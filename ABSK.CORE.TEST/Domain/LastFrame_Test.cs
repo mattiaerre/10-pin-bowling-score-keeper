@@ -40,6 +40,7 @@ namespace ABSK.CORE.TEST.Domain
 
       Assert.IsTrue(_frame.CanRollBonusBall);
     }
+
     [Test]
     public void It_Should_Give_You_A_Bonus_Ball_If_It_Is_A_Spare()
     {
@@ -47,6 +48,55 @@ namespace ABSK.CORE.TEST.Domain
       _frame.SetBallTwo(3);
 
       Assert.IsTrue(_frame.CanRollBonusBall);
+    }
+
+    [Test]
+    public void At_The_Very_Beginning_It_Should_Be_New()
+    {
+      Assert.AreEqual(FrameStatus.New, _frame.GetStatus());
+    }
+
+    [Test]
+    public void After_A_Strike_It_Should_Be_In_Progress()
+    {
+      _frame.SetBallOne(10);
+      Assert.AreEqual(FrameStatus.InProgress, _frame.GetStatus());
+    }
+
+    [Test]
+    public void After_A_Spare_It_Should_Be_In_Progress()
+    {
+      _frame.SetBallOne(5);
+      _frame.SetBallTwo(5);
+      Assert.AreEqual(FrameStatus.InProgress, _frame.GetStatus());
+    }
+
+    [Test]
+    public void After_Two_Balls_It_Should_Be_Over()
+    {
+      _frame.SetBallOne(4);
+      _frame.SetBallTwo(4);
+      Assert.AreEqual(FrameStatus.Over, _frame.GetStatus());
+    }
+
+    [Test]
+    public void After_One_Ball_It_Should_Be_In_Progress()
+    {
+      _frame.SetBallOne(4);
+      Assert.AreEqual(FrameStatus.InProgress, _frame.GetStatus());
+    }
+
+    [TestCase(10, 10, 10)]
+    [TestCase(9, 1, 10)]
+    [TestCase(10, 1, 1)]
+    [TestCase(9, 1, 1)]
+    public void It_Should_Be_Abel_To_Manage_A_Bonus_Ball(int ballOne, int ballTwo, int ballThree)
+    {
+      _frame.SetBallOne(ballOne);
+      _frame.SetBallTwo(ballTwo);
+      Assert.AreEqual(FrameStatus.InProgress, _frame.GetStatus());
+      _frame.SetBallThree(ballThree);
+      Assert.AreEqual(FrameStatus.Over, _frame.GetStatus());
     }
   }
 }

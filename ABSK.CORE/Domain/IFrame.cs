@@ -7,5 +7,6 @@ namespace ABSK.CORE.Domain
     bool IsSpare { get; }
     void SetBallOne(int ballOne);
     void SetBallTwo(int ballTwo);
+    FrameStatus GetStatus();
   }
 }

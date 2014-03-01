@@ -37,5 +37,41 @@ namespace ABSK.CORE.TEST.Domain
 
       Assert.IsTrue(_frame.IsSpare);
     }
+
+    [Test]
+    public void At_The_Very_Beginning_It_Should_Be_New()
+    {
+      Assert.AreEqual(FrameStatus.New, _frame.GetStatus());
+    }
+
+    [Test]
+    public void After_A_Strike_It_Should_Be_Over()
+    {
+      _frame.SetBallOne(10);
+      Assert.AreEqual(FrameStatus.Over, _frame.GetStatus());
+    }
+
+    [Test]
+    public void After_A_Spare_It_Should_Be_Over()
+    {
+      _frame.SetBallOne(5);
+      _frame.SetBallTwo(5);
+      Assert.AreEqual(FrameStatus.Over, _frame.GetStatus());
+    }
+
+    [Test]
+    public void After_Two_Balls_It_Should_Be_Over()
+    {
+      _frame.SetBallOne(4);
+      _frame.SetBallTwo(4);
+      Assert.AreEqual(FrameStatus.Over, _frame.GetStatus());
+    }
+
+    [Test]
+    public void After_One_Ball_It_Should_Be_In_Progress()
+    {
+      _frame.SetBallOne(4);
+      Assert.AreEqual(FrameStatus.InProgress, _frame.GetStatus());
+    }
   }
 }
