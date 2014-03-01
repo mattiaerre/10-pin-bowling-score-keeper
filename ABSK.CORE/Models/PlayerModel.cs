@@ -1,4 +1,5 @@
 using ABSK.CORE.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace ABSK.CORE.Models
