@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace ABSK.CORE.TEST.Domain
 {
   [TestFixture]
-  public class Frame_Test
+  public class Frame_Test : TestBase
   {
     private const int FrameNumber = 4;
     private IFrame _frame;
@@ -12,7 +12,7 @@ namespace ABSK.CORE.TEST.Domain
     [SetUp]
     public void Given_A_Frame()
     {
-      _frame = new Frame(FrameNumber);
+      _frame = new Frame(FrameNumber, NumberOfPins);
     }
 
     [Test]
@@ -24,7 +24,7 @@ namespace ABSK.CORE.TEST.Domain
     [Test]
     public void It_Should_Be_Able_To_Tell_If_It_Is_A_Strike()
     {
-      _frame.SetBallOne(10);
+      _frame.SetBallOne(NumberOfPins);
 
       Assert.IsTrue(_frame.IsStrike);
     }
@@ -47,7 +47,7 @@ namespace ABSK.CORE.TEST.Domain
     [Test]
     public void After_A_Strike_It_Should_Be_Over()
     {
-      _frame.SetBallOne(10);
+      _frame.SetBallOne(NumberOfPins);
       Assert.AreEqual(FrameStatus.Over, _frame.GetStatus());
     }
 

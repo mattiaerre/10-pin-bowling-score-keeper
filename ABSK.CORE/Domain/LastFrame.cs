@@ -4,8 +4,8 @@
   {
     private int? _ballThree;
 
-    public LastFrame(int number)
-      : base(number)
+    public LastFrame(int number, int numberOfPins)
+      : base(number, numberOfPins)
     {
     }
 

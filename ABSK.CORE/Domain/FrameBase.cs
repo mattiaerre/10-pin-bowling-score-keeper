@@ -2,11 +2,13 @@ namespace ABSK.CORE.Domain
 {
   public abstract class FrameBase : IFrame
   {
+    private readonly int _numberOfPins;
     protected int? BallOne;
     protected int? BallTwo;
 
-    protected FrameBase(int number)
+    protected FrameBase(int number, int numberOfPins)
     {
+      _numberOfPins = numberOfPins;
       Number = number;
     }
 
@@ -14,12 +16,12 @@ namespace ABSK.CORE.Domain
 
     public bool IsStrike
     {
-      get { return BallOne == Constants.NumberOfPins; }
+      get { return BallOne == _numberOfPins; }
     }
 
     public bool IsSpare
     {
-      get { return !IsStrike && BallOne + BallTwo == Constants.NumberOfPins; }
+      get { return !IsStrike && BallOne + BallTwo == _numberOfPins; }
     }
 
     protected abstract bool IsNew { get; }

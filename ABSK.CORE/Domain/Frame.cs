@@ -2,8 +2,8 @@ namespace ABSK.CORE.Domain
 {
   public class Frame : FrameBase
   {
-    public Frame(int number)
-      : base(number)
+    public Frame(int number, int numberOfPins)
+      : base(number, numberOfPins)
     {
     }
 

@@ -4,21 +4,20 @@ using NUnit.Framework;
 namespace ABSK.CORE.TEST.Domain
 {
   [TestFixture]
-  public class LastFrame_Test
+  public class LastFrame_Test: TestBase
   {
-    private const int FrameNumber = 10;
     private ILastFrame _frame;
 
     [SetUp]
     public void Given_A_Frame()
     {
-      _frame = new LastFrame(FrameNumber);
+      _frame = new LastFrame(NumberOfFrames, NumberOfPins);
     }
 
     [Test]
     public void It_Should_Be_Able_To_Tell_If_It_Is_A_Strike()
     {
-      _frame.SetBallOne(10);
+      _frame.SetBallOne(NumberOfPins);
 
       Assert.IsTrue(_frame.IsStrike);
     }
@@ -35,7 +34,7 @@ namespace ABSK.CORE.TEST.Domain
     [Test]
     public void It_Should_Give_You_A_Bonus_Ball_If_It_Is_A_Strike()
     {
-      _frame.SetBallOne(10);
+      _frame.SetBallOne(NumberOfPins);
       _frame.SetBallTwo(4);
 
       Assert.IsTrue(_frame.CanRollBonusBall);
@@ -59,7 +58,7 @@ namespace ABSK.CORE.TEST.Domain
     [Test]
     public void After_A_Strike_It_Should_Be_In_Progress()
     {
-      _frame.SetBallOne(10);
+      _frame.SetBallOne(NumberOfPins);
       Assert.AreEqual(FrameStatus.InProgress, _frame.GetStatus());
     }
 
@@ -86,9 +85,9 @@ namespace ABSK.CORE.TEST.Domain
       Assert.AreEqual(FrameStatus.InProgress, _frame.GetStatus());
     }
 
-    [TestCase(10, 10, 10)]
-    [TestCase(9, 1, 10)]
-    [TestCase(10, 1, 1)]
+    [TestCase(NumberOfPins, NumberOfPins, NumberOfPins)]
+    [TestCase(9, 1, NumberOfPins)]
+    [TestCase(NumberOfPins, 1, 1)]
     [TestCase(9, 1, 1)]
     public void It_Should_Be_Abel_To_Manage_A_Bonus_Ball(int ballOne, int ballTwo, int ballThree)
     {

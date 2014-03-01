@@ -7,7 +7,7 @@ using System.Linq;
 namespace ABSK.CORE.TEST.Factories
 {
   [TestFixture]
-  public class PlayerModelFactory_Test
+  public class PlayerModelFactory_Test : TestBase
   {
     private const string Name = "The Dude";
     private IPlayerModelFactory _factory;
@@ -15,7 +15,7 @@ namespace ABSK.CORE.TEST.Factories
     [SetUp]
     public void Given_A_PlayerModelFactory()
     {
-      _factory = new PlayerModelFactory();
+      _factory = new PlayerModelFactory(NumberOfFrames, NumberOfPins);
     }
 
     [Test]
@@ -31,7 +31,7 @@ namespace ABSK.CORE.TEST.Factories
     {
       var model = _factory.Make(Name);
 
-      Assert.AreEqual(Constants.NumberOfFrames - 1, model.Frames.Count());
+      Assert.AreEqual(NumberOfFrames - 1, model.Frames.Count());
     }
 
     [Test]
@@ -39,7 +39,7 @@ namespace ABSK.CORE.TEST.Factories
     {
       var model = _factory.Make(Name);
 
-      Assert.AreEqual(10, model.LastFrame.Number);
+      Assert.AreEqual(NumberOfFrames, model.LastFrame.Number);
     }
   }
 }

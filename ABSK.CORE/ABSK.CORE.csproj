@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Constants.cs" />
     <Compile Include="Domain\FrameBase.cs" />
     <Compile Include="Domain\FrameStatus.cs" />
     <Compile Include="Domain\IFrame.cs" />
