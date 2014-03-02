@@ -8,5 +8,6 @@ namespace ABSK.CORE.Domain
     void AddPlayer(string name);
     IEnumerable<PlayerModel> Players { get; }
     IEnumerable<int> Frames { get; }
+    void SetScore(int?[] score, PlayerModel player, int frameNumber);
   }
 }

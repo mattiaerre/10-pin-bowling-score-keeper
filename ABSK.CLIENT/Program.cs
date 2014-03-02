@@ -1,6 +1,8 @@
-﻿using ABSK.CLIENT.Properties;
+﻿using System.Linq;
+using ABSK.CLIENT.Properties;
 using ABSK.CORE.Domain;
 using ABSK.CORE.Factories;
+using ABSK.CORE.Models;
 using ABSK.CORE.Repositories;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
@@ -35,7 +37,7 @@ namespace ABSK.CLIENT
       {
         foreach (var player in game.Players)
         {
-          ManageScore(player.Name, frameNumber);
+          ManageScore(game, player, frameNumber);
         }
       }
     }
@@ -52,21 +54,25 @@ namespace ABSK.CLIENT
       }
     }
 
-    private static void ManageScore(string name, int number)
+    private static void ManageScore(IGame game, PlayerModel player, int frameNumber)
     {
-      Console.Write("{0}, please enter your score for the 2 bowl of frame {1}: ", name, number);
-      var score = ParseScore(Console.ReadLine());
-
-      // todo: game api in order to manage the score
-
+      // todo: managing the last frame's lable
+      Console.Write("{0}, please enter your score for the 2 bowl of frame {1}: ", player.Name, frameNumber);
+      var score = ParseScoreList(Console.ReadLine());
+      game.SetScore(score, player, frameNumber);
     }
 
-    private static int?[] ParseScore(string input)
+    private static int?[] ParseScoreList(string input)
     {
       var score = input.Split(' ');
+      return score.Select(ParseScoreItem).ToArray();
+    }
 
-
-      throw new NotImplementedException();
+    private static int? ParseScoreItem(string input)
+    {
+      if (input == "-")
+        return null; // info: not sure if I need this
+      return Convert.ToInt32(input);
     }
 
     private static void PressAnyKeyToContinue()

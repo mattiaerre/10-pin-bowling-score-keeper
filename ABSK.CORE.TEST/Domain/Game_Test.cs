@@ -1,4 +1,6 @@
-﻿using ABSK.CORE.Domain;
+﻿using System;
+using System.Collections.Generic;
+using ABSK.CORE.Domain;
 using ABSK.CORE.Factories;
 using ABSK.CORE.Repositories;
 using NUnit.Framework;
@@ -46,6 +48,14 @@ namespace ABSK.CORE.TEST.Domain
     public void It_Should_Expose_A_List_Of_Frames()
     {
       Assert.AreEqual(OneFrame, _game.Frames.Count());
+    }
+
+    [Test]
+    public void It_Should_Be_Able_To_Manage_A_Specific_Score()
+    {
+      var player = _game.Players.First(e => e.Name == TheDude);
+      var score = new List<int?> {10, null, null};
+      _game.SetScore(score.ToArray(), player, OneFrame);
     }
   }
 }
