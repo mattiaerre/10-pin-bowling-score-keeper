@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABSK.CORE", "ABSK.CORE\ABSK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABSK.CORE.TEST", "ABSK.CORE.TEST\ABSK.CORE.TEST.csproj", "{B2F7DD65-A6AE-410A-B493-C8BF29BB51BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABSK.CLIENT", "ABSK.CLIENT\ABSK.CLIENT.csproj", "{57A9A4FE-517B-4031-8808-0BB90044556C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B2F7DD65-A6AE-410A-B493-C8BF29BB51BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2F7DD65-A6AE-410A-B493-C8BF29BB51BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2F7DD65-A6AE-410A-B493-C8BF29BB51BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57A9A4FE-517B-4031-8808-0BB90044556C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57A9A4FE-517B-4031-8808-0BB90044556C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57A9A4FE-517B-4031-8808-0BB90044556C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57A9A4FE-517B-4031-8808-0BB90044556C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

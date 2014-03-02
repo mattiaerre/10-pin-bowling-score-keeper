@@ -25,7 +25,7 @@ namespace ABSK.CORE.Factories
       };
     }
 
-    private static IEnumerable<Frame> MakeFrames(int numberOfFrames, int numberOfPins)
+    private static IEnumerable<IFrame> MakeFrames(int numberOfFrames, int numberOfPins)
     {
       var list = new List<Frame>();
       for (var i = 1; i < numberOfFrames; i++)

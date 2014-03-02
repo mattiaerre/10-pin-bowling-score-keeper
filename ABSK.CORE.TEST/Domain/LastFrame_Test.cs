@@ -89,7 +89,7 @@ namespace ABSK.CORE.TEST.Domain
     [TestCase(9, 1, NumberOfPins)]
     [TestCase(NumberOfPins, 1, 1)]
     [TestCase(9, 1, 1)]
-    public void It_Should_Be_Abel_To_Manage_A_Bonus_Ball(int ballOne, int ballTwo, int ballThree)
+    public void It_Should_Be_Able_To_Manage_A_Bonus_Ball(int ballOne, int ballTwo, int ballThree)
     {
       _frame.SetBallOne(ballOne);
       _frame.SetBallTwo(ballTwo);

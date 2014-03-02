@@ -8,8 +8,8 @@ namespace ABSK.CORE.Domain
 
     protected FrameBase(int number, int numberOfPins)
     {
+      Number = number;
       _numberOfPins = numberOfPins;
-      Number = number; // todo: move up
     }
 
     public int Number { get; private set; }

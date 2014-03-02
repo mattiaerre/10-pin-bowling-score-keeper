@@ -9,6 +9,7 @@ namespace ABSK.CORE.Repositories
   public class PlayerRepository : IPlayerRepository
   {
     private readonly IPlayerModelFactory _factory;
+    // todo: maybe a "simple" IEnumerable is enough
     private readonly IDictionary<Guid, PlayerModel> _list = new Dictionary<Guid, PlayerModel>();
 
     public PlayerRepository(IPlayerModelFactory factory)
