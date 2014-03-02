@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using ABSK.CORE.Domain;
+﻿using ABSK.CORE.Domain;
 using ABSK.CORE.Factories;
 using ABSK.CORE.Repositories;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ABSK.CORE.TEST.Domain
@@ -33,13 +32,9 @@ namespace ABSK.CORE.TEST.Domain
     [Test]
     public void At_The_End_The_Status_Is_Over()
     {
-      // todo: refactor this
-      foreach (var player in _game.Players)
-      {
-        player.LastFrame.SetBallOne(NumberOfPins);
-        player.LastFrame.SetBallTwo(NumberOfPins);
-        player.LastFrame.SetBallThree(NumberOfPins);
-      }
+      var player = _game.Players.First(e => e.Name == TheDude);
+      var score = new List<int?> { 10, 10, 10 };
+      _game.SetScore(score.ToArray(), player, OneFrame);
 
       Assert.AreEqual(GameStatus.Over, _game.GetStatus());
     }
@@ -48,14 +43,6 @@ namespace ABSK.CORE.TEST.Domain
     public void It_Should_Expose_A_List_Of_Frames()
     {
       Assert.AreEqual(OneFrame, _game.Frames.Count());
-    }
-
-    [Test]
-    public void It_Should_Be_Able_To_Manage_A_Specific_Score()
-    {
-      var player = _game.Players.First(e => e.Name == TheDude);
-      var score = new List<int?> {10, null, null};
-      _game.SetScore(score.ToArray(), player, OneFrame);
     }
   }
 }

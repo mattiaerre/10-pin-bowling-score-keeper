@@ -56,7 +56,7 @@ namespace ABSK.CLIENT
 
     private static void ManageScore(IGame game, PlayerModel player, int frameNumber)
     {
-      // todo: managing the last frame's lable
+      // todo: last frame's question
       Console.Write("{0}, please enter your score for the 2 bowl of frame {1}: ", player.Name, frameNumber);
       var score = ParseScoreList(Console.ReadLine());
       game.SetScore(score, player, frameNumber);
