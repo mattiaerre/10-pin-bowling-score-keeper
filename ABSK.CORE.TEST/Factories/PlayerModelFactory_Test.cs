@@ -1,5 +1,4 @@
-﻿using ABSK.CORE.Domain;
-using ABSK.CORE.Factories;
+﻿using ABSK.CORE.Factories;
 using ABSK.CORE.Models;
 using NUnit.Framework;
 using System.Linq;
