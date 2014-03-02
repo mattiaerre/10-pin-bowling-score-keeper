@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ABSK.CORE.Models;
 
 namespace ABSK.CORE.Repositories
@@ -7,5 +8,6 @@ namespace ABSK.CORE.Repositories
   {
     Guid Add(string name);
     PlayerModel Get(Guid playerId);
+    IEnumerable<PlayerModel> GetAll();
   }
 }

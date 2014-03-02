@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Frame_Test.cs" />
+    <Compile Include="Domain\Game_Test.cs" />
     <Compile Include="Domain\LastFrame_Test.cs" />
     <Compile Include="Factories\PlayerModelFactory_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

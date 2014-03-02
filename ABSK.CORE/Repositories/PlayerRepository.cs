@@ -30,5 +30,10 @@ namespace ABSK.CORE.Repositories
       // todo: add exception handling
       return _list.First(e => e.Key == id).Value;
     }
+
+    public IEnumerable<PlayerModel> GetAll()
+    {
+      return _list.Select(e => e.Value);
+    }
   }
 }

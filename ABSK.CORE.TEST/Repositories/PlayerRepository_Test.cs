@@ -1,4 +1,5 @@
-﻿using ABSK.CORE.Factories;
+﻿using System.Linq;
+using ABSK.CORE.Factories;
 using ABSK.CORE.Models;
 using ABSK.CORE.Repositories;
 using Moq;
@@ -27,6 +28,16 @@ namespace ABSK.CORE.TEST.Repositories
       var player = _repository.Get(id);
 
       Assert.AreEqual(TheDude, player.Name);
+    }
+
+    [Test]
+    public void It_Should_Be_Able_To_Return_All_The_Players()
+    {
+      _repository.Add(TheDude);
+      _repository.Add(Walter);
+      _repository.Add(Donny);
+
+      Assert.AreEqual(3, _repository.GetAll().Count());
     }
   }
 }
